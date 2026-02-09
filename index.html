@@ -1,217 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>ROKU | Nigerian Business Directory</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ROKU V2 — Design Evolution</title>
 
-<script src="https://cdn.tailwindcss.com"></script>
+  <!-- Meta -->
+  <meta name="description" content="ROKU V2 marks the evolution from experimentation to intention. A refined design system built for clarity, structure, and scale." />
 
-<style>
-body{
-  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-}
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-mark{
-  background:#fde68a;
-  padding:0 0.15rem;
-  border-radius:3px;
-}
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --fg: #ffffff;
+      --muted: #9a9a9a;
+      --accent: #4f46e5; /* ROKU accent */
+      --max-width: 1100px;
+    }
 
-.badge{
-  font-size:11px;
-  letter-spacing:0.15em;
-  border:1px solid #111;
-  padding:3px 8px;
-  margin-right:10px;
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-.card{
-  transition:all .25s ease;
-}
+    body {
+      font-family: "Inter", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+    }
 
-.card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 20px 40px rgba(0,0,0,.08);
-}
-</style>
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    section {
+      padding: 6rem 1.5rem;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.7);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: 0.12em;
+    }
+
+    .nav-links a {
+      margin-left: 2rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--fg);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero p {
+      max-width: 600px;
+      font-size: 1.1rem;
+      color: var(--muted);
+    }
+
+    .accent {
+      color: var(--accent);
+    }
+
+    /* SECTIONS */
+    h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .section-text {
+      max-width: 700px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .card {
+      padding: 2rem;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      transition: transform 0.3s ease, border 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,0.15);
+    }
+
+    .card h3 {
+      margin-bottom: 0.6rem;
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 3rem 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    /* ANIMATION */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
+<body>
 
-<body class="bg-gray-100 text-gray-900">
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <div class="logo">ROKU</div>
+      <div class="nav-links">
+        <a href="#evolution">Evolution</a>
+        <a href="#identity">Identity</a>
+        <a href="#system">System</a>
+      </div>
+    </div>
+  </nav>
 
-<!-- HERO -->
-<section class="min-h-screen flex items-center justify-center px-6 bg-white border-b">
-<div class="max-w-3xl text-center">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container fade-in">
+      <h1>ROKU V2<br><span class="accent">Design Evolution</span></h1>
+      <p>
+        ROKU V2 marks the transition from experimentation to intention.
+        A refined design system built for clarity, structure, and scale.
+      </p>
+    </div>
+  </section>
 
-<h1 class="text-6xl font-bold tracking-widest">ROKU</h1>
+  <!-- EVOLUTION -->
+  <section id="evolution">
+    <div class="container fade-in">
+      <h2>From Concept to Structure</h2>
+      <p class="section-text">
+        Version 1 explored ideas. Version 2 defines direction.
+        Fewer elements, stronger hierarchy, and a unified visual language
+        that moves as one ecosystem.
+      </p>
+    </div>
+  </section>
 
-<p class="text-xs tracking-[0.35em] text-gray-500 mt-3">
-BUSINESS DIRECTORY
-</p>
+  <!-- IDENTITY -->
+  <section id="identity">
+    <div class="container fade-in">
+      <h2>A Typography-Driven Identity</h2>
+      <p class="section-text">
+        The wordmark becomes the symbol. Every letter carries weight.
+        Every space has intention. The “O” acts as an anchor —
+        orbit, connection, continuity.
+      </p>
 
-<p class="text-xl text-gray-700 mt-10 mb-10">
-Discover Nigerian small businesses in one place.
-</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Clarity</h3>
+          <p>Minimal design that removes noise and sharpens focus.</p>
+        </div>
+        <div class="card">
+          <h3>Consistency</h3>
+          <p>A system that works across web, media, and motion.</p>
+        </div>
+        <div class="card">
+          <h3>Presence</h3>
+          <p>Quiet confidence that doesn’t chase attention.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<input
-id="searchInput"
-type="text"
-placeholder="Search by product, service, or vibe..."
-class="w-full px-6 py-4 border rounded-xl text-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
-/>
+  <!-- SYSTEM -->
+  <section id="system">
+    <div class="container fade-in">
+      <h2>Built for the Web</h2>
+      <p class="section-text">
+        ROKU V2 is designed for speed, flow, and scalability.
+        Modular sections, clear navigation, and subtle motion
+        create a disciplined digital experience.
+      </p>
+    </div>
+  </section>
 
-</div>
-</section>
+  <!-- FOOTER -->
+  <footer>
+    © <span id="year"></span> ROKU. All rights reserved.
+  </footer>
 
-<!-- BUSINESSES -->
-<section id="businesses" class="px-6 py-24">
-<div class="max-w-6xl mx-auto">
+  <script>
+    // Fade-in on scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, { threshold: 0.1 });
 
-<h2 class="text-4xl font-semibold mb-16">Businesses on ROKU</h2>
+    document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
 
-<div id="businessList" class="grid gap-12"></div>
+    // Dynamic year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 
-<p id="noResults" class="hidden text-center text-gray-500 mt-20">
-No businesses match this search yet.
-</p>
-
-</div>
-</section>
-
-<!-- CTA -->
-<section class="px-6 py-28 bg-white text-center border-t">
-<h2 class="text-4xl font-semibold mb-6">Own a business?</h2>
-<p class="text-gray-600 mb-10">
-Get listed on ROKU and reach customers across Nigeria.
-</p>
-<a href="https://wa.me/2347061150867"
-class="px-12 py-4 bg-gray-900 text-white font-medium rounded-lg shadow-lg">
-List Your Business
-</a>
-</section>
-
-<footer class="px-6 py-10 text-center text-gray-500">
-© 2026 ROKU
-</footer>
-
-<script>
-
-const businesses = [
-
-{ name:"Swills Imagery",
-about:"Luxury photography focused on portraits, weddings, and storytelling.",
-whatsapp:"https://wa.me/message/TDYDRMP2LMZSD1" },
-
-{ name:"Cupidfragrance",
-about:"Personalized perfume recommendations matched to your lifestyle.",
-whatsapp:"https://wa.me/message/FTIUWON6RHPCE1" },
-
-{ name:"Tiarish Hairline and Fashionhub",
-about:"Hair, fashion pieces, accessories, fragrances, and jewelry.",
-whatsapp:"https://wa.me/message/6JJUYWWJVKSFF1" },
-
-{ name:"GIFTYSOLES",
-about:"Unisex shoes designed for comfort and timeless style.",
-whatsapp:"https://wa.me/message/QHQYJJOP3D7JB1" },
-
-{ name:"Ara Blingz",
-about:"Jewelry, watches, accessories, and engraved pieces.",
-whatsapp:"https://wa.me/message/4IUEYZHHP5ZMI1" },
-
-{ name:"AfroLines Creations",
-about:"Afrocentric accessories and decor inspired by African culture.",
-whatsapp:"https://wa.link/ykojot" },
-
-{ name:"Goddess Glam",
-about:"Beauty brand focused on lip artistry and expression.",
-whatsapp:"https://wa.me/+2347040916897" },
-
-{ name:"AJ LUXURY",
-about:"Accessories that enhance beauty, confidence, and elegance.",
-whatsapp:"https://wa.me/message/AJBLBO376XGEC1" },
-
-{ name:"Tomiwa Roberto Carlos Samuel",
-about:"Creative sessions and classes launching soon. Connect early.",
-whatsapp:"https://wa.me/message/YBB5YR7MT6DHJ1",
-curated:true },
-
-{ name:"Tofams Tailored",
-about:"Bespoke kaftans, traditional wear, pants, and vintage shirts.",
-whatsapp:"https://wa.me/9063693389" },
-
-{ name:"SEAFOODS BY IBUKUNOLUWA",
-about:"Premium dried seafoods prepared for quality and taste.",
-whatsapp:"https://wa.me/message/VSHDGDMRXYBQP1" },
-
-{ name:"stikart",
-about:"I turn ideas into eye catching visuals that speak louder than words.",
-whatsapp:"https://wa.me/+2348081867670" },
-
-/* NEW BUSINESS */
-{ name:"Philz Autoz Limited",
-about:"Quality tyres, car servicing, maintenance, auto parts, vehicle upgrades, and project vehicle procurement.",
-whatsapp:"https://wa.me/23453333220" }
-
-];
-
-const list=document.getElementById("businessList");
-const searchInput=document.getElementById("searchInput");
-const noResults=document.getElementById("noResults");
-
-function highlight(text,keyword){
-if(!keyword) return text;
-const regex=new RegExp(`(${keyword})`,"gi");
-return text.replace(regex,"<mark>$1</mark>");
-}
-
-function renderBusinesses(data,keyword=""){
-list.innerHTML="";
-noResults.classList.toggle("hidden",data.length!==0);
-
-data.forEach((biz,index)=>{
-
-list.innerHTML+=`
-<div class="card bg-white rounded-2xl shadow-md p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
-
-<div>
-<span class="text-xs font-mono text-gray-400">
-${String(index+1).padStart(2,"0")}
-</span>
-
-<h3 class="text-2xl font-semibold flex items-center mt-2">
-${biz.curated ? `<span class="badge">CURATED</span>`:""}
-${highlight(biz.name,keyword)}
-</h3>
-
-<p class="text-gray-600 mt-3 max-w-xl">
-${highlight(biz.about,keyword)}
-</p>
-</div>
-
-<a href="${biz.whatsapp}"
-class="px-8 py-3 border rounded-lg font-medium hover:bg-gray-900 hover:text-white transition">
-WhatsApp
-</a>
-
-</div>
-`;
-});
-
-}
-
-renderBusinesses(businesses);
-
-searchInput.addEventListener("input",()=>{
-const keyword=searchInput.value.toLowerCase();
-
-const filtered=businesses.filter(biz=>
-biz.name.toLowerCase().includes(keyword)||
-biz.about.toLowerCase().includes(keyword)
-);
-
-renderBusinesses(filtered,keyword);
-});
-
-</script>
 </body>
 </html>
