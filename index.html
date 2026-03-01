@@ -21,9 +21,12 @@ mark{
 .badge{
   font-size:11px;
   letter-spacing:0.15em;
-  border:1px solid #111;
-  padding:3px 8px;
+  background:linear-gradient(90deg,#d4af37,#f5d76e);
+  color:#111;
+  padding:4px 10px;
   margin-right:10px;
+  border-radius:999px;
+  font-weight:600;
 }
 
 .card{
@@ -153,7 +156,11 @@ whatsapp:"https://wa.me/2347073425041" },
 { id:17, name:"DonPope Studios",
 about:"Multimedia production company creating wedding visuals, business ads, event coverage, photography, cinematography, and documentaries.",
 whatsapp:"https://wa.me/+2348113270911",
-curated:true }
+curated:true },
+
+{ id:18, name:"Lore's Luxe",
+about:"Curated room decor and functional household appliances designed to elevate your space and bring comfort home.",
+whatsapp:"https://wa.me/+2349025890143" }
 
 ];
 
@@ -171,9 +178,7 @@ function renderBusinesses(data,keyword=""){
 list.innerHTML="";
 noResults.classList.toggle("hidden",data.length!==0);
 
-data
-.sort((a,b)=>a.id-b.id)
-.forEach((biz)=>{
+data.sort((a,b)=>a.id-b.id).forEach((biz)=>{
 
 list.innerHTML+=`
 <div class="card bg-white rounded-2xl shadow-md p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
