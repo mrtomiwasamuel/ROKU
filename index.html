@@ -21,11 +21,11 @@ mark{
 .badge{
   font-size:11px;
   letter-spacing:0.15em;
-  background:linear-gradient(90deg,#d4af37,#f5d76e);
-  color:#111;
-  padding:4px 10px;
+  border:1px solid #d4af37;
+  color:#b08900;
+  padding:3px 10px;
   margin-right:10px;
-  border-radius:999px;
+  border-radius:4px;
   font-weight:600;
 }
 
@@ -44,13 +44,8 @@ mark{
 
 <section class="min-h-screen flex items-center justify-center px-6 bg-white border-b">
 <div class="max-w-3xl text-center">
-
 <h1 class="text-6xl font-bold tracking-widest">ROKU</h1>
-
-<p class="text-xs tracking-[0.35em] text-gray-500 mt-3">
-BUSINESS DIRECTORY
-</p>
-
+<p class="text-xs tracking-[0.35em] text-gray-500 mt-3">BUSINESS DIRECTORY</p>
 <p class="text-xl text-gray-700 mt-10 mb-10">
 Discover Nigerian small businesses in one place.
 </p>
@@ -59,7 +54,7 @@ Discover Nigerian small businesses in one place.
 id="searchInput"
 type="text"
 placeholder="Search by product, service, or vibe..."
-class="w-full px-6 py-4 border rounded-xl text-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
+class="w-full px-6 py-4 border rounded-xl text-lg focus:outline-none focus:ring-2 focus:ring-black"
 />
 
 </div>
@@ -79,7 +74,18 @@ No businesses match this search yet.
 </div>
 </section>
 
-<footer class="px-6 py-10 text-center text-gray-500 border-t">
+<section class="px-6 py-28 bg-white text-center border-t">
+<h2 class="text-4xl font-semibold mb-6">Own a business?</h2>
+<p class="text-gray-600 mb-10">
+Get listed on ROKU and reach customers across Nigeria.
+</p>
+<a href="https://wa.me/2347061150867"
+class="px-12 py-4 bg-black text-white font-medium rounded-lg shadow-lg">
+List Your Business
+</a>
+</section>
+
+<footer class="px-6 py-10 text-center text-gray-500">
 © 2026 ROKU
 </footer>
 
@@ -87,84 +93,85 @@ No businesses match this search yet.
 
 const businesses = [
 
-{ id:1, name:"Swills Imagery",
-about:"Luxury photography focused on portraits, weddings, and storytelling.",
-whatsapp:"https://wa.me/message/TDYDRMP2LMZSD1" },
+{ id:1, name:"Swills Imagery", category:"Photography",
+description:"Luxury photography for portraits, weddings, and storytelling.",
+whatsapp:"https://wa.me/message/TDYDRMP2LMZSD1", curated:false },
 
-{ id:2, name:"Cupidfragrance",
-about:"Personalized perfume recommendations matched to your lifestyle.",
-whatsapp:"https://wa.me/message/FTIUWON6RHPCE1" },
+{ id:2, name:"Cupidfragrance", category:"Fragrance",
+description:"Personalized perfume recommendations matched to your lifestyle.",
+whatsapp:"https://wa.me/message/FTIUWON6RHPCE1", curated:false },
 
-{ id:3, name:"Tiarish Hairline and Fashionhub",
-about:"Hair, fashion pieces, accessories, fragrances, and jewelry.",
-whatsapp:"https://wa.me/message/6JJUYWWJVKSFF1" },
+{ id:3, name:"Tiarish Hairline and Fashionhub", category:"Beauty & Fashion",
+description:"Hair, fashion pieces, accessories, fragrances, and jewelry.",
+whatsapp:"https://wa.me/message/6JJUYWWJVKSFF1", curated:false },
 
-{ id:4, name:"GIFTYSOLES",
-about:"Unisex shoes designed for comfort and timeless style.",
-whatsapp:"https://wa.me/message/QHQYJJOP3D7JB1" },
+{ id:4, name:"GIFTYSOLES", category:"Footwear",
+description:"Unisex shoes designed for comfort and timeless style.",
+whatsapp:"https://wa.me/message/QHQYJJOP3D7JB1", curated:false },
 
-{ id:5, name:"Ara Blingz",
-about:"Jewelry, watches, accessories, and engraved pieces.",
-whatsapp:"https://wa.me/message/4IUEYZHHP5ZMI1" },
+{ id:5, name:"Ara Blingz", category:"Jewelry",
+description:"Jewelry, watches, accessories, and engraved pieces.",
+whatsapp:"https://wa.me/message/4IUEYZHHP5ZMI1", curated:false },
 
-{ id:6, name:"AfroLines Creations",
-about:"Afrocentric accessories and decor inspired by African culture.",
-whatsapp:"https://wa.link/ykojot" },
+{ id:6, name:"AfroLines Creations", category:"Home & Decor",
+description:"Afrocentric accessories and decor inspired by African culture.",
+whatsapp:"https://wa.link/ykojot", curated:false },
 
-{ id:7, name:"Goddess Glam",
-about:"Beauty brand focused on lip artistry and expression.",
-whatsapp:"https://wa.me/+2347040916897" },
+{ id:7, name:"Goddess Glam", category:"Beauty",
+description:"Lip artistry and expressive beauty products.",
+whatsapp:"https://wa.me/+2347040916897", curated:false },
 
-{ id:8, name:"AJ LUXURY",
-about:"Accessories that enhance beauty, confidence, and elegance.",
-whatsapp:"https://wa.me/message/AJBLBO376XGEC1" },
+{ id:8, name:"AJ LUXURY", category:"Accessories",
+description:"Accessories that enhance beauty and confidence.",
+whatsapp:"https://wa.me/message/AJBLBO376XGEC1", curated:false },
 
-{ id:9, name:"Tomiwa Roberto Carlos Samuel",
-about:"Creative sessions and classes launching soon. Connect early.",
-whatsapp:"https://wa.me/message/YBB5YR7MT6DHJ1",
-curated:true },
+{ id:9, name:"Tomiwa Roberto Carlos Samuel", category:"Creative",
+description:"Creative sessions and classes launching soon.",
+whatsapp:"https://wa.me/message/YBB5YR7MT6DHJ1", curated:true },
 
-{ id:10, name:"Tofams Tailored",
-about:"Bespoke kaftans, traditional wear, pants, and vintage shirts.",
-whatsapp:"https://wa.me/9063693389" },
+{ id:10, name:"Tofams Tailored", category:"Fashion",
+description:"Bespoke kaftans, traditional wear, pants, and vintage shirts.",
+whatsapp:"https://wa.me/9063693389", curated:false },
 
-{ id:11, name:"SEAFOODS BY IBUKUNOLUWA",
-about:"Premium dried seafoods prepared for quality and taste.",
-whatsapp:"https://wa.me/message/VSHDGDMRXYBQP1" },
+{ id:11, name:"SEAFOODS BY IBUKUNOLUWA", category:"Food",
+description:"Premium dried seafood prepared for quality and taste.",
+whatsapp:"https://wa.me/message/VSHDGDMRXYBQP1", curated:false },
 
-{ id:12, name:"stikart",
-about:"I turn ideas into eye catching visuals that speak louder than words.",
-whatsapp:"https://wa.me/+2348081867670" },
+{ id:12, name:"stikart", category:"Design",
+description:"Eye catching visuals that speak louder than words.",
+whatsapp:"https://wa.me/+2348081867670", curated:false },
 
-{ id:13, name:"Philz Autoz Limited",
-about:"Quality tyres, car servicing, maintenance, auto parts, vehicle upgrades, and project vehicle procurement.",
-whatsapp:"https://wa.me/23453333220" },
+{ id:13, name:"Philz Autoz Limited", category:"Automotive",
+description:"Tyres, servicing, auto parts, upgrades, and vehicle procurement.",
+whatsapp:"https://wa.me/23453333220", curated:false },
 
-{ id:14, name:"J.babyalaga",
-about:"Traditional wedding compere specializing in Alaga Iduro, Alaga Ijoko, and Eru Iyawo presentation.",
-whatsapp:"https://wa.me/2347058775427",
-curated:true },
+{ id:14, name:"J.babyalaga", category:"Events",
+description:"Traditional wedding compere, alaga ijoko and iduro services.",
+whatsapp:"https://wa.me/+2347058775427", curated:false },
 
-{ id:15, name:"Spark craft lighting NG",
-about:"Elegant lighting pieces designed to transform modern homes and luxury interiors.",
-whatsapp:"https://wa.me/+2348106715066" },
+{ id:15, name:"Spark Craft Lighting NG", category:"Lighting",
+description:"Elegant lighting that transforms spaces into experiences.",
+whatsapp:"https://wa.me/+2348106715066", curated:false },
 
-{ id:16, name:"THE DANIEL MEDIA (Daniel the Creative)",
-about:"Creative design studio turning bold ideas into scroll stopping visuals and powerful brand concepts.",
-whatsapp:"https://wa.me/2347073425041" },
+{ id:16, name:"THE DANIEL MEDIA", category:"Creative",
+description:"Scroll stopping visuals and bold creative concepts.",
+whatsapp:"https://wa.me/07073425041", curated:false },
 
-{ id:17, name:"DonPope Studios",
-about:"Multimedia production company creating wedding visuals, business ads, event coverage, photography, cinematography, and documentaries.",
-whatsapp:"https://wa.me/+2348113270911",
-curated:true },
+{ id:17, name:"DonPope Studios", category:"Media Production",
+description:"Wedding shoots, ads, event coverage, and cinematic visuals.",
+whatsapp:"https://wa.me/+2348113270911", curated:true },
 
-{ id:18, name:"Lore's Luxe",
-about:"Curated room decor and functional household appliances designed to elevate your space and bring comfort home.",
-whatsapp:"https://wa.me/+2349025890143" },
+{ id:18, name:"Lore's Luxe", category:"Home & Living",
+description:"Room decor and household pieces that elevate your space.",
+whatsapp:"https://wa.me/+2349025890143", curated:false },
 
-{ id:19, name:"Bare & Bold Collection",
-about:"Lingerie, underwear, nightwear, gym sets, and swimwear designed to fit right, feel effortless, and help you show up bold every time.",
-whatsapp:"http://wa.me/2347076761224" }
+{ id:19, name:"Bare & Bold Collection", category:"Fashion",
+description:"Lingerie, nightwear, gym sets, and swimwear designed to fit and empower.",
+whatsapp:"https://wa.me/+2347076761224", curated:false },
+
+{ id:20, name:"Numbtothepain Hub (NTTP Hub)", category:"Fashion",
+description:"Bold clothing designed to elevate your aura.",
+whatsapp:"https://wa.me/2349128435219", curated:false }
 
 ];
 
@@ -182,7 +189,7 @@ function renderBusinesses(data,keyword=""){
 list.innerHTML="";
 noResults.classList.toggle("hidden",data.length!==0);
 
-data.sort((a,b)=>a.id-b.id).forEach((biz)=>{
+data.forEach((biz)=>{
 
 list.innerHTML+=`
 <div class="card bg-white rounded-2xl shadow-md p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
@@ -198,31 +205,29 @@ ${highlight(biz.name,keyword)}
 </h3>
 
 <p class="text-gray-600 mt-3 max-w-xl">
-${highlight(biz.about,keyword)}
+${highlight(biz.description,keyword)}
 </p>
 </div>
 
 <a href="${biz.whatsapp}"
-class="px-8 py-3 border rounded-lg font-medium hover:bg-gray-900 hover:text-white transition">
+class="px-8 py-3 border rounded-lg font-medium hover:bg-black hover:text-white transition">
 WhatsApp
 </a>
 
 </div>
 `;
 });
-
 }
 
 renderBusinesses(businesses);
 
 searchInput.addEventListener("input",()=>{
 const keyword=searchInput.value.toLowerCase();
-
 const filtered=businesses.filter(biz=>
 biz.name.toLowerCase().includes(keyword)||
-biz.about.toLowerCase().includes(keyword)
+biz.description.toLowerCase().includes(keyword)||
+biz.category.toLowerCase().includes(keyword)
 );
-
 renderBusinesses(filtered,keyword);
 });
 
