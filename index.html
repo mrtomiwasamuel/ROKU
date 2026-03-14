@@ -110,11 +110,14 @@ const businesses = [
 ]
 
 // --------------------
-// Render Businesses
+// Elements
 // --------------------
 const list = document.getElementById("businessList")
 const top = document.getElementById("topBusinesses")
 
+// --------------------
+// Render Businesses
+// --------------------
 function renderBusinesses(data){
   list.innerHTML = ""
   data.forEach(biz => {
@@ -199,12 +202,11 @@ function openBusinessProfile(id){
 function goHome(){ location.href = location.pathname }
 
 // --------------------
-// Init
+// Init on window load
 // --------------------
-renderBusinesses(businesses)
-renderTopBusinesses()
-
 window.onload = () => {
+  renderBusinesses(businesses)
+  renderTopBusinesses()
   if(window.location.hash.includes("business-")){
     const id = window.location.hash.replace("#business-","")
     openBusinessProfile(id)
