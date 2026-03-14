@@ -7,10 +7,9 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
 body {
-    font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background: #f6f6f6;
 }
-
 .logo {
     font-size: 56px;
     font-weight: 900;
@@ -18,7 +17,6 @@ body {
     text-transform: uppercase;
     margin-bottom: 10px;
 }
-
 .badge {
     font-size: 11px;
     letter-spacing: .15em;
@@ -29,16 +27,13 @@ body {
     margin-right: 8px;
     border-radius: 4px;
 }
-
 .card {
     transition: .25s ease;
 }
-
 .card:hover {
     transform: translateY(-4px);
     box-shadow: 0 20px 40px rgba(0,0,0,.08);
 }
-
 .curated {
     border: 1px solid #c9a227;
 }
@@ -52,7 +47,6 @@ body {
     <div class="logo">ROKU</div>
     <p class="text-xs tracking-[0.35em] text-gray-500 mt-3">BUSINESS DIRECTORY</p>
     <p class="text-xl text-gray-700 mt-10">Discover Nigerian small businesses in one place.</p>
-    <!-- Search input preserved as is -->
     <input id="searchInput" class="border px-4 py-3 rounded-md mt-6 w-full max-w-md" placeholder="Search businesses..." onkeyup="searchBusinesses()">
   </div>
 </section>
@@ -87,7 +81,7 @@ body {
 
 <script>
 // --------------------
-// Business Data Array
+// Business Data
 // --------------------
 const businesses = [
 { id:"01", name:"Swills Imagery", about:"Luxury photography focused on portraits and weddings.", whatsapp:"https://wa.me/message/TDYDRMP2LMZSD1" },
@@ -113,7 +107,7 @@ const businesses = [
 { id:"22", name:"Appollo 88", about:"Professional voice over talent.", whatsapp:"https://wa.me/2349030425552" },
 { id:"23", name:"D CREATIVES", about:"Ad-ready content for brands.", whatsapp:"https://wa.me/2348137069370" },
 { id:"24", name:"Massive Cakes & Events", about:"Beautiful cakes for celebrations.", whatsapp:"https://wa.me/message/GLSVU52WNNJZC1", curated:true }
-];
+]
 
 // --------------------
 // Render Businesses
@@ -143,7 +137,7 @@ function renderBusinesses(data){
 }
 
 // --------------------
-// Search Function
+// Search
 // --------------------
 function searchBusinesses(){
   const term = document.getElementById("searchInput").value.toLowerCase()
@@ -185,7 +179,7 @@ function renderTopBusinesses(){
 }
 
 // --------------------
-// Business Profile Page
+// Business Profile
 // --------------------
 function openBusinessProfile(id){
   const biz = businesses.find(b=>b.id===id)
