@@ -1,363 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>ROKU | Nigerian Business Directory</title>
-
 <script src="https://cdn.tailwindcss.com"></script>
-
 <style>
-
-body{
-font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-background:#f6f6f6;
+body {
+    font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background: #f6f6f6;
 }
 
-.logo{
-font-size:48px;
-font-weight:700;
-letter-spacing:.35em;
+.logo {
+    font-size: 56px;
+    font-weight: 900;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
 }
 
-.badge{
-font-size:11px;
-letter-spacing:.15em;
-border:1px solid #c9a227;
-background:#c9a227;
-color:white;
-padding:3px 8px;
-margin-right:10px;
+.badge {
+    font-size: 11px;
+    letter-spacing: .15em;
+    border: 1px solid #c9a227;
+    background: #c9a227;
+    color: white;
+    padding: 3px 8px;
+    margin-right: 8px;
+    border-radius: 4px;
 }
 
-.card{
-transition:.25s ease;
+.card {
+    transition: .25s ease;
 }
 
-.card:hover{
-transform:translateY(-4px);
-box-shadow:0 20px 40px rgba(0,0,0,.08);
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0,0,0,.08);
 }
 
-.curated{
-border:1px solid #c9a227;
+.curated {
+    border: 1px solid #c9a227;
 }
-
-.search{
-border:1px solid #ddd;
-border-radius:8px;
-padding:12px 16px;
-width:100%;
-max-width:420px;
-margin-top:30px;
-}
-
 </style>
-
 </head>
-
 <body>
 
+<!-- HERO -->
 <section class="bg-white border-b py-24 px-6 text-center">
-
-<div class="max-w-3xl mx-auto">
-
-<div class="logo">ROKU</div>
-
-<p class="text-xs tracking-[0.35em] text-gray-500 mt-3">
-BUSINESS DIRECTORY
-</p>
-
-<p class="text-xl text-gray-700 mt-10">
-Discover Nigerian small businesses in one place.
-</p>
-
-<input 
-id="searchInput"
-class="search"
-placeholder="Search businesses..."
-onkeyup="searchBusinesses()"
-/>
-
-</div>
-
+  <div class="max-w-3xl mx-auto">
+    <div class="logo">ROKU</div>
+    <p class="text-xs tracking-[0.35em] text-gray-500 mt-3">BUSINESS DIRECTORY</p>
+    <p class="text-xl text-gray-700 mt-10">Discover Nigerian small businesses in one place.</p>
+    <!-- Search input preserved as is -->
+    <input id="searchInput" class="border px-4 py-3 rounded-md mt-6 w-full max-w-md" placeholder="Search businesses..." onkeyup="searchBusinesses()">
+  </div>
 </section>
 
-
+<!-- TOP BUSINESSES -->
 <section class="px-6 py-20 bg-white border-b">
-
-<div class="max-w-5xl mx-auto">
-
-<h2 class="text-3xl font-semibold mb-10">
-Top Businesses This Week
-</h2>
-
-<div id="topBusinesses" class="grid gap-8"></div>
-
-</div>
-
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-3xl font-semibold mb-10">Top Businesses This Week</h2>
+    <div id="topBusinesses" class="grid gap-8"></div>
+  </div>
 </section>
 
-
+<!-- DIRECTORY -->
 <section id="directorySection" class="px-6 py-24">
-
-<div class="max-w-6xl mx-auto">
-
-<h2 class="text-4xl font-semibold mb-16">
-Businesses on ROKU
-</h2>
-
-<div id="businessList" class="grid gap-12"></div>
-
-</div>
-
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-4xl font-semibold mb-16">Businesses on ROKU</h2>
+    <div id="businessList" class="grid gap-12"></div>
+  </div>
 </section>
 
-
+<!-- BUSINESS PROFILE -->
 <section id="businessProfile" class="hidden px-6 py-24 bg-white">
-
-<div class="max-w-4xl mx-auto">
-
-<button onclick="goHome()" class="mb-8 text-sm underline">
-← Back to directory
-</button>
-
-<div id="profileContent"></div>
-
-</div>
-
+  <div class="max-w-4xl mx-auto">
+    <button onclick="goHome()" class="mb-8 text-sm underline">← Back to directory</button>
+    <div id="profileContent"></div>
+  </div>
 </section>
-
 
 <footer class="text-center py-10 text-gray-500">
-© 2026 ROKU
+  © 2026 ROKU
 </footer>
 
-
 <script>
+// --------------------
+// Business Data Array
+// --------------------
+const businesses = [
+{ id:"01", name:"Swills Imagery", about:"Luxury photography focused on portraits and weddings.", whatsapp:"https://wa.me/message/TDYDRMP2LMZSD1" },
+{ id:"02", name:"Cupidfragrance", about:"Personalized perfume recommendations.", whatsapp:"https://wa.me/message/FTIUWON6RHPCE1" },
+{ id:"03", name:"Tiarish Hairline and Fashionhub", about:"Hair, fashion pieces and jewelry.", whatsapp:"https://wa.me/message/6JJUYWWJVKSFF1" },
+{ id:"04", name:"GIFTYSOLES", about:"Unisex shoes built for comfort.", whatsapp:"https://wa.me/message/QHQYJJOP3D7JB1" },
+{ id:"05", name:"Ara Blingz", about:"Jewelry and accessories.", whatsapp:"https://wa.me/message/4IUEYZHHP5ZMI1" },
+{ id:"06", name:"AfroLines Creations", about:"Afrocentric accessories and decor.", whatsapp:"https://wa.link/ykojot" },
+{ id:"08", name:"AJ LUXURY", about:"Beauty enhancing accessories.", whatsapp:"https://wa.me/message/AJBLBO376XGEC1" },
+{ id:"09", name:"Tomiwa Roberto Carlos Samuel", about:"Creative sessions launching soon.", whatsapp:"https://wa.me/message/YBB5YR7MT6DHJ1", curated:true },
+{ id:"10", name:"Tofams Tailored", about:"Bespoke kaftans and traditional wear.", whatsapp:"https://wa.me/9063693389" },
+{ id:"11", name:"SEAFOODS BY IBUKUNOLUWA", about:"Premium dried seafoods.", whatsapp:"https://wa.me/message/VSHDGDMRXYBQP1" },
+{ id:"12", name:"stikart", about:"Visual design studio.", whatsapp:"https://wa.me/2348081867670" },
+{ id:"13", name:"Philz Autoz Limited", about:"Auto servicing and upgrades.", whatsapp:"https://wa.me/23453333220" },
+{ id:"14", name:"J.babyalaga", about:"Traditional wedding compere.", whatsapp:"https://wa.me/2347058775427", curated:true },
+{ id:"15", name:"Spark Craft Lighting NG", about:"Interior lighting solutions.", whatsapp:"https://wa.me/2348106715066" },
+{ id:"16", name:"THE DANIEL MEDIA", about:"Creative studio producing bold visuals.", whatsapp:"https://wa.me/2347073425041" },
+{ id:"17", name:"DonPope Studios", about:"Multimedia production company.", whatsapp:"https://wa.me/2348113270911" },
+{ id:"18", name:"Lore's Luxe", about:"Room decor and household pieces.", whatsapp:"https://wa.me/2349025890143" },
+{ id:"19", name:"Bare and Bold Collection", about:"Lingerie and fashion essentials.", whatsapp:"https://wa.me/2347076761224" },
+{ id:"20", name:"Numbtothepain Hub", about:"Creative clothing brand.", whatsapp:"https://wa.me/2349167616915" },
+{ id:"21", name:"Baddies Circle", about:"Luxury lash extensions and pedicures.", whatsapp:"https://wa.me/2348169930246" },
+{ id:"22", name:"Appollo 88", about:"Professional voice over talent.", whatsapp:"https://wa.me/2349030425552" },
+{ id:"23", name:"D CREATIVES", about:"Ad-ready content for brands.", whatsapp:"https://wa.me/2348137069370" },
+{ id:"24", name:"Massive Cakes & Events", about:"Beautiful cakes for celebrations.", whatsapp:"https://wa.me/message/GLSVU52WNNJZC1", curated:true }
+];
 
-const businesses=[
-
-{ id:"01",name:"Swills Imagery",about:"Luxury photography focused on portraits and weddings.",whatsapp:"https://wa.me/message/TDYDRMP2LMZSD1" },
-
-{ id:"02",name:"Cupidfragrance",about:"Personalized perfume recommendations.",whatsapp:"https://wa.me/message/FTIUWON6RHPCE1" },
-
-{ id:"03",name:"Tiarish Hairline and Fashionhub",about:"Hair, fashion pieces and jewelry.",whatsapp:"https://wa.me/message/6JJUYWWJVKSFF1" },
-
-{ id:"04",name:"GIFTYSOLES",about:"Unisex shoes built for comfort.",whatsapp:"https://wa.me/message/QHQYJJOP3D7JB1" },
-
-{ id:"05",name:"Ara Blingz",about:"Jewelry and accessories.",whatsapp:"https://wa.me/message/4IUEYZHHP5ZMI1" },
-
-{ id:"06",name:"AfroLines Creations",about:"Afrocentric accessories and decor.",whatsapp:"https://wa.link/ykojot" },
-
-{ id:"08",name:"AJ LUXURY",about:"Beauty enhancing accessories.",whatsapp:"https://wa.me/message/AJBLBO376XGEC1" },
-
-{ id:"09",name:"Tomiwa Roberto Carlos Samuel",about:"Creative sessions launching soon.",whatsapp:"https://wa.me/message/YBB5YR7MT6DHJ1",curated:true },
-
-{ id:"10",name:"Tofams Tailored",about:"Bespoke kaftans and traditional wear.",whatsapp:"https://wa.me/9063693389" },
-
-{ id:"11",name:"SEAFOODS BY IBUKUNOLUWA",about:"Premium dried seafoods.",whatsapp:"https://wa.me/message/VSHDGDMRXYBQP1" },
-
-{ id:"12",name:"stikart",about:"Visual design studio.",whatsapp:"https://wa.me/2348081867670" },
-
-{ id:"13",name:"Philz Autoz Limited",about:"Auto servicing and upgrades.",whatsapp:"https://wa.me/23453333220" },
-
-{ id:"14",name:"J.babyalaga",about:"Traditional wedding compere.",whatsapp:"https://wa.me/2347058775427",curated:true },
-
-{ id:"15",name:"Spark Craft Lighting NG",about:"Interior lighting solutions.",whatsapp:"https://wa.me/2348106715066" },
-
-{ id:"16",name:"THE DANIEL MEDIA",about:"Creative studio producing bold visuals.",whatsapp:"https://wa.me/2347073425041" },
-
-{ id:"17",name:"DonPope Studios",about:"Multimedia production company.",whatsapp:"https://wa.me/2348113270911" },
-
-{ id:"18",name:"Lore's Luxe",about:"Room decor and household pieces.",whatsapp:"https://wa.me/2349025890143" },
-
-{ id:"19",name:"Bare and Bold Collection",about:"Lingerie and fashion essentials.",whatsapp:"https://wa.me/2347076761224" },
-
-{ id:"20",name:"Numbtothepain Hub",about:"Creative clothing brand.",whatsapp:"https://wa.me/2349167616915" },
-
-{ id:"21",name:"Baddies Circle",about:"Luxury lash extensions and pedicures.",whatsapp:"https://wa.me/2348169930246" },
-
-{ id:"22",name:"Appollo 88",about:"Professional voice over talent.",whatsapp:"https://wa.me/2349030425552" },
-
-{ id:"23",name:"D CREATIVES",about:"Ad-ready content for brands.",whatsapp:"https://wa.me/2348137069370" },
-
-{ id:"24",name:"Massive Cakes & Events",about:"Beautiful cakes for celebrations.",whatsapp:"https://wa.me/message/GLSVU52WNNJZC1",curated:true }
-
-]
-
-
-const list=document.getElementById("businessList")
-const top=document.getElementById("topBusinesses")
-
+// --------------------
+// Render Businesses
+// --------------------
+const list = document.getElementById("businessList")
+const top = document.getElementById("topBusinesses")
 
 function renderBusinesses(data){
-
-list.innerHTML=""
-
-data.forEach(biz=>{
-
-list.innerHTML+=`
-
+  list.innerHTML = ""
+  data.forEach(biz => {
+    list.innerHTML += `
 <div id="biz-${biz.id}" class="card bg-white rounded-xl shadow p-10 flex flex-col md:flex-row md:justify-between gap-8 ${biz.curated?"curated":""}">
-
-<div>
-
-<span class="text-xs text-gray-400">${biz.id}</span>
-
-<h3 class="text-2xl font-semibold mt-2 flex items-center">
-
-${biz.curated?'<span class="badge">CURATED</span>':""}
-
-<a href="#business-${biz.id}" onclick="openBusinessProfile('${biz.id}')">${biz.name}</a>
-
-</h3>
-
-<p class="text-gray-600 mt-3 max-w-xl">
-${biz.about}
-</p>
-
-</div>
-
-<div class="flex gap-3">
-
-<a onclick="trackClick('${biz.id}','whatsapp')" href="${biz.whatsapp}" class="px-6 py-3 border rounded-lg">
-WhatsApp
-</a>
-
-<button onclick="shareBusiness('${biz.id}')" class="px-6 py-3 border rounded-lg">
-Share
-</button>
-
-</div>
-
-</div>
-
-`
-
-})
-
+  <div>
+    <span class="text-xs text-gray-400">${biz.id}</span>
+    <h3 class="text-2xl font-semibold mt-2 flex items-center">
+      ${biz.curated?'<span class="badge">CURATED</span>':""}
+      <a href="#business-${biz.id}" onclick="openBusinessProfile('${biz.id}')">${biz.name}</a>
+    </h3>
+    <p class="text-gray-600 mt-3 max-w-xl">${biz.about}</p>
+  </div>
+  <div class="flex gap-3">
+    <a onclick="trackClick('${biz.id}','whatsapp')" href="${biz.whatsapp}" class="px-6 py-3 border rounded-lg">WhatsApp</a>
+    <button onclick="shareBusiness('${biz.id}')" class="px-6 py-3 border rounded-lg">Share</button>
+  </div>
+</div>`
+  })
 }
 
-
+// --------------------
+// Search Function
+// --------------------
 function searchBusinesses(){
-
-const term=document.getElementById("searchInput").value.toLowerCase()
-
-const filtered=businesses.filter(b=>
-b.name.toLowerCase().includes(term) ||
-b.about.toLowerCase().includes(term)
-)
-
-renderBusinesses(filtered)
-
+  const term = document.getElementById("searchInput").value.toLowerCase()
+  const filtered = businesses.filter(b => b.name.toLowerCase().includes(term) || b.about.toLowerCase().includes(term))
+  renderBusinesses(filtered)
 }
 
-
+// --------------------
+// Share & Track
+// --------------------
 function shareBusiness(id){
-
-const url=location.origin+location.pathname+"#business-"+id
-
-navigator.clipboard.writeText(url)
-
-alert("Business link copied")
-
-trackClick(id,"share")
-
+  const url = location.origin + location.pathname + "#business-" + id
+  navigator.clipboard.writeText(url)
+  alert("Business link copied")
+  trackClick(id,"share")
 }
-
 
 function trackClick(id,type){
-
-let stats=JSON.parse(localStorage.getItem("rokuStats"))||{}
-
-if(!stats[id]) stats[id]={whatsapp:0,share:0}
-
-stats[id][type]++
-
-localStorage.setItem("rokuStats",JSON.stringify(stats))
-
+  let stats = JSON.parse(localStorage.getItem("rokuStats")) || {}
+  if(!stats[id]) stats[id] = {whatsapp:0,share:0}
+  stats[id][type]++
+  localStorage.setItem("rokuStats",JSON.stringify(stats))
 }
 
-
+// --------------------
+// Top Businesses
+// --------------------
 function renderTopBusinesses(){
-
-let stats=JSON.parse(localStorage.getItem("rokuStats"))||{}
-
-let ranked=Object.entries(stats).sort((a,b)=>{
-
-return (b[1].whatsapp+b[1].share)-(a[1].whatsapp+a[1].share)
-
-}).slice(0,3)
-
-ranked.forEach(entry=>{
-
-let biz=businesses.find(b=>b.id===entry[0])
-
-if(!biz) return
-
-top.innerHTML+=`
-
-<div class="bg-gray-100 p-6 rounded-lg">
-
-<h3 class="text-xl font-semibold">${biz.name}</h3>
-
-<p class="text-gray-600 mt-2">${biz.about}</p>
-
-</div>
-
-`
-
-})
-
+  let stats = JSON.parse(localStorage.getItem("rokuStats"))||{}
+  let ranked = Object.entries(stats).sort((a,b)=> (b[1].whatsapp+b[1].share)-(a[1].whatsapp+a[1].share)).slice(0,3)
+  ranked.forEach(entry=>{
+    let biz = businesses.find(b=>b.id===entry[0])
+    if(!biz) return
+    top.innerHTML += `<div class="bg-gray-100 p-6 rounded-lg">
+      <h3 class="text-xl font-semibold">${biz.name}</h3>
+      <p class="text-gray-600 mt-2">${biz.about}</p>
+    </div>`
+  })
 }
 
-
+// --------------------
+// Business Profile Page
+// --------------------
 function openBusinessProfile(id){
-
-const biz=businesses.find(b=>b.id===id)
-
-document.getElementById("directorySection").style.display="none"
-
-document.querySelectorAll("section")[1].style.display="none"
-
-const profile=document.getElementById("businessProfile")
-
-profile.classList.remove("hidden")
-
-document.getElementById("profileContent").innerHTML=`
-
-<h1 class="text-4xl font-semibold mb-4">${biz.name}</h1>
-
-<p class="text-gray-600 text-lg mb-10">${biz.about}</p>
-
-<div class="flex gap-4">
-
-<a href="${biz.whatsapp}" class="px-8 py-4 border rounded-lg">Contact on WhatsApp</a>
-
-<button onclick="shareBusiness('${biz.id}')" class="px-8 py-4 border rounded-lg">Share Business</button>
-
-</div>
-
-`
-
+  const biz = businesses.find(b=>b.id===id)
+  document.getElementById("directorySection").style.display="none"
+  document.querySelectorAll("section")[1].style.display="none"
+  const profile = document.getElementById("businessProfile")
+  profile.classList.remove("hidden")
+  document.getElementById("profileContent").innerHTML = `
+    <h1 class="text-4xl font-semibold mb-4">${biz.name}</h1>
+    <p class="text-gray-600 text-lg mb-10">${biz.about}</p>
+    <div class="flex gap-4">
+      <a href="${biz.whatsapp}" class="px-8 py-4 border rounded-lg">Contact on WhatsApp</a>
+      <button onclick="shareBusiness('${biz.id}')" class="px-8 py-4 border rounded-lg">Share Business</button>
+    </div>`
 }
 
+function goHome(){ location.href = location.pathname }
 
-function goHome(){
-
-location.href=location.pathname
-
-}
-
-
+// --------------------
+// Init
+// --------------------
 renderBusinesses(businesses)
 renderTopBusinesses()
 
+window.onload = () => {
+  if(window.location.hash.includes("business-")){
+    const id = window.location.hash.replace("#business-","")
+    openBusinessProfile(id)
+  }
+}
 </script>
-
 </body>
 </html>
